@@ -1,0 +1,55 @@
+Idea testowa 
+Platforma bilety.skm.pkp.pl umożliwia zakup biletów na przejazdy Szybkiej Kolei Miejskiej w Trójmieście. W kolejnych sesjach sprawdzę jak zachowuje się formularz logowania do zakupu biletów 
+
+Sesja 1.1 
+Bug # 1
+
+Tytuł:
+Błąd strony 400 - przy braku akceptacji 
+Kroki reprodukcji:
+
+Na stronie głównej http://www.skm.pkp.pl/, przechodzimy klikając “Kup bilet pkp skm” na stronę https://bilety.skm.pkp.pl/.
+Wybieramy Bilet Miesięczny Miejski-Gdańsk TAM i POWRÓT
+Klikamy zaloguj się, a potem zarejestruj  się ( lepsze byłoby jak opcja zarejestruj się była na pierwszej stronie, gdyż nie mając konta trzeba się najpierw zarejestrować).
+Wypełniamy dane, czyli adres e-mail, hasło i jego powtórzenie , nie zaznaczając punktów na zgodę z regulaminem, oraz na zgodę na przetwarzaniem danych.
+Pojawia się błąd strony o kodzie 400 ( Bad request)
+Oczekiwany rezultat:
+
+Brak utraty podanych danych oraz informacja że nie zostały zaznaczone zgody.
+
+Obecne zachowanie:
+
+Tracimy dane, które zostały już wprowadzone i proces trzeba rozpocząć na nowo.
+
+Priorytet:
+
+Medium
+
+Sesja 1.1
+
+Bug #2
+Błąd serwera 500 - błąd w dacie urodzenia 
+Kroki w reprodukcji:
+
+Na stronie https://bilety.skm.pkp.pl/ przechodzimy na “Profil”
+Edytujemy datę urodzin , na błędną np. 2032 rok urodzenia ( dzień i miesiąc jest z wyboru i nie ma możliwości pomyłki) 
+Klikamy “zapisz”
+Pojawia się błąd o kodzie 500 ( internal server error) wraz z informacją “Jeśli problem nie zniknie w ciągu kilku minut i chcesz nas pogonić, napisz na pomoc@bilety.skm.pkp.pl.”
+Oczekiwany rezultat:
+Informacja że dana data jest nieprawidłowa.
+
+Obecne zachowanie:
+Zostajemy przeniesieni na stronę z informacją o błędzie.
+
+Priorytet
+
+Medium
+
+
+Platforma bilety.skm.pkp.pl jest sprawnie działającą stroną z możliwościami założenia swojego konta i zakupu wybranych przez siebie biletów. Po przez dodanie na swoim profilu kolejnych pasażerów jest również możliwość zakupu biletów dla osób trzecich. W bieżącej sesji został sprawdzony moduł zakupu biletu “Bilet Miesięczny Miejski-Gdańsk TAM i POWRÓT”. 
+Po przeprowadzonych testach poważnym brakiem wydaje się brak weryfikacji poprawności założonego konta. Podajemy fikcyjne dane ( automat jedynie nie przepuści maila bez @, oraz w polu imię i nazwisko nie  może być cyfr ) i zostajemy przeniesieni do strony z płatnościami.
+
+Standardem w obecnych czasach jest weryfikacja założonego konta poprzez potwierdzenie  jego na podany przez nas email.
+
+Rozwiązaniem może także być uzupełnienie reCAPTCHA , zapobiegnie to tworzenie loginów przez boty, które na chwilę obecną jest bardzo proste. 
+ 
